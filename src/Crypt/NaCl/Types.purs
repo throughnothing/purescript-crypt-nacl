@@ -33,6 +33,9 @@ foreign import data Nonce :: *
 -- | A NaCl MessageRaw, which is represented as a Uint8Array in JS
 foreign import data MessageRaw :: *
 
+-- | A Javascript Uint8Array
+foreign import data Uint8Array :: *
+
 -- | An NaCl plaintext Message
 type Message = String
 
