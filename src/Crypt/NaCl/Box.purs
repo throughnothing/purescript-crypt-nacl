@@ -47,7 +47,7 @@ foreign import _boxOpenAfter :: Box -> Nonce -> BoxSharedKey -> Nullable Message
 
 
 boxOpen :: Box -> Nonce -> BoxPublicKey -> BoxSecretKey -> Maybe MessageRaw
-boxOpen b n p s= toMaybe (_boxOpen b n p s)
+boxOpen b n p s = toMaybe (_boxOpen b n p s)
 
 boxOpenAfter :: Box -> Nonce -> BoxSharedKey -> Maybe MessageRaw
 boxOpenAfter b n k = toMaybe (_boxOpenAfter b n k)
