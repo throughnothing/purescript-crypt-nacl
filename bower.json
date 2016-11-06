@@ -8,7 +8,6 @@
     "crypto"
   ],
   "license": "Public Domain",
-
   "ignore": [
     "**/.*",
     "bower_components",
@@ -18,7 +17,6 @@
     "package.json",
     "bower.json"
   ],
-
   "dependencies": {
     "purescript-prelude": "^2.1.0",
     "purescript-console": "^1.0.0",
@@ -30,5 +28,8 @@
   "devDependencies": {
     "purescript-psci-support": "^1.0.0",
     "purescript-assert": "^2.0.0"
+  },
+  "resolutions": {
+    "purescript-prelude": "^2.1.0"
   }
 }
