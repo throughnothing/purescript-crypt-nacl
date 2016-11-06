@@ -9,6 +9,7 @@ import Unsafe.Coerce (unsafeCoerce)
 
 import Crypt.NaCl.Types
 
+
 -- | Denotes a class of NaCl types which are convertable to `Uint8Array`s.
 -- | Instances of this typeclass will `unsafeCoerce` their values to `Uint8Array`
 -- | because we know that everything in/out of the underlying library are,
