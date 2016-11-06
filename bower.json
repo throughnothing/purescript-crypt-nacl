@@ -7,7 +7,7 @@
     "nacl",
     "crypto"
   ],
-  "license": "Public Domain",
+  "license": "CC0-1.0",
   "repository": {
     "type": "git",
     "url": "git://github.com/throughnothing/purescript-crypt-nacl.git"
