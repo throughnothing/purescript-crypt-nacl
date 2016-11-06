@@ -23,18 +23,14 @@
   ],
   "dependencies": {
     "purescript-prelude": "^2.1.0",
-    "purescript-console": "^1.0.0",
-    "purescript-arraybuffer-types": "^0.2.0",
+    "purescript-eff": "^2.0.0",
+    "purescript-unsafe-coerce": "^2.0.0",
     "purescript-maybe": "^2.0.1",
-    "purescript-nullable": "^2.0.0",
-    "purescript-unsafe-coerce": "^2.0.0"
+    "purescript-arraybuffer-types": "^0.2.0",
+    "purescript-nullable": "^2.0.0"
   },
   "devDependencies": {
-    "purescript-psci-support": "^1.0.0",
+    "purescript-psci-support": "^2.0.0",
     "purescript-assert": "^2.0.0"
-  },
-  "resolutions": {
-    "purescript-prelude": "^2.1.0",
-    "purescript-eff": "^2.0.0"
   }
 }
