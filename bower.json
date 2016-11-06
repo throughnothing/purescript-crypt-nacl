@@ -34,6 +34,7 @@
     "purescript-assert": "^2.0.0"
   },
   "resolutions": {
-    "purescript-prelude": "^2.1.0"
+    "purescript-prelude": "^2.1.0",
+    "purescript-eff": "^2.0.0"
   }
 }
