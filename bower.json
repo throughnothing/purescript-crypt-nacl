@@ -8,6 +8,10 @@
     "crypto"
   ],
   "license": "Public Domain",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/throughnothing/purescript-crypt-nacl.git"
+  },
   "ignore": [
     "**/.*",
     "bower_components",
