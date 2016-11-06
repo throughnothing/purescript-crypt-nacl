@@ -1,7 +1,7 @@
 module Crypt.NaCl.Types where
 
--- | Base64Able denotes types which can be converted to Base64 using `toBase64`
-data Base64Able
+-- | Denotes NaCl types which are convertable to Base64 strings
+data NaClBase64Able
   = HashSha512B64 HashSha512
   | NonceB64 Nonce
   | MessageRawB64 MessageRaw
@@ -16,8 +16,8 @@ data Base64Able
   | SignSecretKeyB64 SignSecretKey
   | SignedMessageRawB64 SignedMessageRaw
 
--- | UTF8StringAble represents types which can be converted to a human-readable String
-data UTF8StringAble = MessageRawStr MessageRaw
+-- | Denotes NaCl types which can be converted to a human-readable String
+data NaClStringAble = MessageRawStr MessageRaw
 
 -- | NACL_RANDOM Effect, which signifies that this computation can carry out
 -- | a cryptographic random number generation effect
@@ -33,9 +33,11 @@ foreign import data Nonce :: *
 -- | A NaCl MessageRaw, which is represented as a Uint8Array in JS
 foreign import data MessageRaw :: *
 
+-- | An NaCl plaintext Message
 type Message = String
-type Base64  = String
 
+-- | A Base64 String
+type Base64  = String
 
 
 -- | A NaCl Box, which is an encrypted, authenticated message
@@ -54,13 +56,11 @@ foreign import data BoxSecretKey :: *
 foreign import data BoxSharedKey :: *
 
 
-
 -- | a NaCL SecretBox
 foreign import data SecretBox :: *
 
 -- | a NaCL SecretBoxKey
 foreign import data SecretBoxKey :: *
-
 
 
 -- | A NaCl Signature

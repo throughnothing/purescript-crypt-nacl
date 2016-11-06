@@ -12,9 +12,9 @@ runBoxTests :: forall e. Eff (naclRandom :: NACL_RANDOM, assert :: ASSERT | e) U
 runBoxTests = do
   -- | Setup with 3 keypairs, Alice, Bob, Evil
   aliceKp <- generateBoxKeyPair
-  bobKp <- generateBoxKeyPair
-  evilKp <- generateBoxKeyPair
-  nonce <- generateNonce
+  bobKp   <- generateBoxKeyPair
+  evilKp  <- generateBoxKeyPair
+  nonce   <- generateNonce
   let alicePubKey = getBoxPublicKey aliceKp
   let aliceSecKey = getBoxSecretKey aliceKp
   let bobPubKey   = getBoxPublicKey bobKp
@@ -24,7 +24,7 @@ runBoxTests = do
   let msgRaw      = toMessageRaw msg
 
   -- | Test getting keyPair from BoxSecretKey
-  let bobKp2 = (getBoxKeyPair bobSecKey)
+  let bobKp2        = (getBoxKeyPair bobSecKey)
   let bobSecKey1B64 = (toBase64 (BoxSecretKeyB64 (getBoxSecretKey bobKp)))
   let bobSecKey2B64 = (toBase64 (BoxSecretKeyB64 (getBoxSecretKey bobKp2)))
   let bobPubKey1B64 = (toBase64 (BoxPublicKeyB64 (getBoxPublicKey bobKp)))

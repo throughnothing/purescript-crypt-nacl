@@ -8,8 +8,6 @@ import Control.Monad.Eff (Eff)
 import Data.Nullable (Nullable, toMaybe)
 import Data.Maybe (Maybe)
 
-import Crypt.NaCl.Random (generateNonce)
-
 import Crypt.NaCl.Types (
     MessageRaw
   , NACL_RANDOM
@@ -27,5 +25,7 @@ foreign import secretBox :: MessageRaw -> Nonce -> SecretBoxKey -> SecretBox
 foreign import _secretBoxOpen :: SecretBox -> Nonce -> SecretBoxKey -> Nullable MessageRaw
 
 -- | Open a SecretBox, returning `Maybe MessageRaw`
+-- | If decryption and authentication succeed, `Just MessageRaw` will be
+-- | returned.  If decryption or authentication fail, `Nothing` will be returned
 secretBoxOpen :: SecretBox -> Nonce -> SecretBoxKey -> Maybe MessageRaw
 secretBoxOpen b n k = toMaybe (_secretBoxOpen b n k)
