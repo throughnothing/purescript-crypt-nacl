@@ -19,7 +19,7 @@ runSignTests = do
   let pubKeyB  = getSignPublicKey signKpB
   let signKpA2 = getSignKeyPair secKeyA
   let str      = "Test message 123 haha"
-  let msg      = toMessage str
+  let msg      = fromString str
 
   -- Check that we get the same key
   assert $ cmpSignKp signKpA signKpA2

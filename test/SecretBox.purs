@@ -15,7 +15,7 @@ runSecretBoxTests = do
   nonce    <- generateNonce
   badNonce <- generateNonce
   let str = "Test Message 12345"
-  let msg = toMessage str
+  let msg = fromString str
 
   let sBox = secretBox msg nonce keyA
   -- Try with good nonce but bad Key

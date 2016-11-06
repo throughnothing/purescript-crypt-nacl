@@ -21,7 +21,7 @@ runBoxTests = do
   let bobSecKey   = getBoxSecretKey bobKp
   let evilSecKey  = getBoxSecretKey evilKp
   let str         = "Test Message 123"
-  let msg        = toMessage str
+  let msg         = fromString str
 
   -- | Test getting keyPair from BoxSecretKey
   let bobKp2        = (getBoxKeyPair bobSecKey)
