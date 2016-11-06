@@ -7,6 +7,7 @@ module Crypt.NaCl.Util
 
 import Prelude ((<<<))
 
+import Data.ArrayBuffer.Types (Uint8Array)
 import Unsafe.Coerce (unsafeCoerce)
 
 import Crypt.NaCl.Types
