@@ -1,6 +1,8 @@
 module Crypt.NaCl.Hash where
 
-import Crypt.NaCl.Types (HashSha512, MessageRaw)
+import Data.ArrayBuffer.Types (Uint8Array)
 
--- | Compute the SHA-512 hash of a `MessageRaw`
-foreign import hash :: MessageRaw -> HashSha512
+import Crypt.NaCl.Types (HashSha512)
+
+-- | Compute the SHA-512 hash of any `Uint8Array`
+foreign import hash :: Uint8Array -> HashSha512

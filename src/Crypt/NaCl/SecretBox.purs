@@ -9,7 +9,7 @@ import Data.Nullable (Nullable, toMaybe)
 import Data.Maybe (Maybe)
 
 import Crypt.NaCl.Types (
-    MessageRaw
+    Message
   , NACL_RANDOM
   , Nonce
   , SecretBoxKey
@@ -20,12 +20,12 @@ import Crypt.NaCl.Types (
 foreign import generateSecretBoxKey :: forall e. Eff (naclRandom :: NACL_RANDOM | e) SecretBoxKey
 
 -- | Create a SecretBox, which is an encrypted and authenticated message
-foreign import secretBox :: MessageRaw -> Nonce -> SecretBoxKey -> SecretBox
+foreign import secretBox :: Message -> Nonce -> SecretBoxKey -> SecretBox
 
-foreign import _secretBoxOpen :: SecretBox -> Nonce -> SecretBoxKey -> Nullable MessageRaw
+foreign import _secretBoxOpen :: SecretBox -> Nonce -> SecretBoxKey -> Nullable Message
 
--- | Open a SecretBox, returning `Maybe MessageRaw`
--- | If decryption and authentication succeed, `Just MessageRaw` will be
+-- | Open a SecretBox, returning `Maybe Message`
+-- | If decryption and authentication succeed, `Just Message` will be
 -- | returned.  If decryption or authentication fail, `Nothing` will be returned
-secretBoxOpen :: SecretBox -> Nonce -> SecretBoxKey -> Maybe MessageRaw
+secretBoxOpen :: SecretBox -> Nonce -> SecretBoxKey -> Maybe Message
 secretBoxOpen b n k = toMaybe (_secretBoxOpen b n k)

@@ -1,18 +1,26 @@
 module Test.Util where
 
 import Prelude
+import Data.ArrayBuffer.Types (Uint8Array)
+import Data.Either
 import Data.Maybe
 import Crypt.NaCl
 
-cmpMsg :: Message -> Maybe MessageRaw -> Boolean
-cmpMsg m (Just r) = m == (toString (MessageRawStr r))
+cmpMsg :: String -> Maybe Message -> Boolean
+cmpMsg m (Just r) = case (toString r) of
+                  Right a -> a == m
+                  Left e  -> false
 cmpMsg _ Nothing = false
 
-cmpSignKp ::  SignKeyPair -> SignKeyPair -> Boolean
-cmpSignKp a b = ((_sB64Pub a) == (_sB64Pub b)) && ((_sB64Sec a) == (_sB64Sec b))
+cmpSignKp :: SignKeyPair -> SignKeyPair -> Boolean
+cmpSignKp a b = (cmpUint8Array pubA pubB) && (cmpUint8Array secA secB)
+  where
+    pubA = toUint8Array $ getSignPublicKey a
+    pubB = toUint8Array $ getSignPublicKey b
+    secA = toUint8Array $ getSignSecretKey a
+    secB = toUint8Array $ getSignSecretKey b
 
-_sB64Pub :: SignKeyPair -> Base64
-_sB64Pub kp = toBase64 (SignPublicKeyB64 (getSignPublicKey kp))
+cmpUint8ArrayAble :: forall a. (Uint8ArrayAble a) => a -> a -> Boolean
+cmpUint8ArrayAble a b = cmpUint8Array (toUint8Array a) (toUint8Array b)
 
-_sB64Sec :: SignKeyPair -> Base64
-_sB64Sec kp = toBase64 (SignSecretKeyB64 (getSignSecretKey kp))
+foreign import cmpUint8Array :: Uint8Array -> Uint8Array -> Boolean

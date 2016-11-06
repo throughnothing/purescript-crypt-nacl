@@ -20,32 +20,28 @@ runBoxTests = do
   let bobPubKey   = getBoxPublicKey bobKp
   let bobSecKey   = getBoxSecretKey bobKp
   let evilSecKey  = getBoxSecretKey evilKp
-  let msg         = "Test Message 123"
-  let msgRaw      = toMessageRaw msg
+  let str         = "Test Message 123"
+  let msg        = toMessage str
 
   -- | Test getting keyPair from BoxSecretKey
   let bobKp2        = (getBoxKeyPair bobSecKey)
-  let bobSecKey1B64 = (toBase64 (BoxSecretKeyB64 (getBoxSecretKey bobKp)))
-  let bobSecKey2B64 = (toBase64 (BoxSecretKeyB64 (getBoxSecretKey bobKp2)))
-  let bobPubKey1B64 = (toBase64 (BoxPublicKeyB64 (getBoxPublicKey bobKp)))
-  let bobPubKey2B64 = (toBase64 (BoxPublicKeyB64 (getBoxPublicKey bobKp2)))
-  assert $ bobSecKey1B64 == bobSecKey2B64
-  assert $ bobPubKey1B64 == bobPubKey2B64
+  assert $ cmpUint8ArrayAble (getBoxSecretKey bobKp2) (getBoxSecretKey bobKp)
+  assert $ cmpUint8ArrayAble (getBoxPublicKey bobKp2) (getBoxPublicKey bobKp)
 
   -- | Encrypt a box from bob -> alice
-  let myBox  = box msgRaw nonce alicePubKey bobSecKey
+  let myBox  = box msg nonce alicePubKey bobSecKey
   -- | Fail to decrypt box with wrong keys
-  let msgRawFail    = boxOpen myBox nonce bobPubKey bobSecKey
-  assert $ isNothing msgRawFail
+  let msgFail    = boxOpen myBox nonce bobPubKey bobSecKey
+  assert $ isNothing msgFail
   -- | Succeed to decrypt box with right keys
-  let msgRawSuccess = boxOpen myBox nonce alicePubKey bobSecKey
-  assert $ cmpMsg msg msgRawSuccess
+  let msgSuccess = boxOpen myBox nonce alicePubKey bobSecKey
+  assert $ cmpMsg str msgSuccess
 
   -- | Test Before/After Box Encryption/Decryption
   let mySharedKey = boxBefore bobPubKey aliceSecKey
   let myBadSharedKey = boxBefore alicePubKey evilSecKey
-  let myBoxAfter = boxAfter msgRaw nonce mySharedKey
+  let myBoxAfter = boxAfter msg nonce mySharedKey
   let myOpenMsgFail = boxOpenAfter myBoxAfter nonce myBadSharedKey
   let myOpenMsgSuccess = boxOpenAfter myBoxAfter nonce mySharedKey
   assert $ isNothing myOpenMsgFail
-  assert $ cmpMsg msg myOpenMsgSuccess
+  assert $ cmpMsg str myOpenMsgSuccess

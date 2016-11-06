@@ -12,6 +12,6 @@ import Test.Sign (runSignTests)
 
 main :: forall e. Eff (naclRandom :: NACL_RANDOM, assert :: ASSERT | e) Unit
 main = do
+  runSignTests
   runBoxTests
   runSecretBoxTests
-  runSignTests

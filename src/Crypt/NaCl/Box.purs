@@ -21,7 +21,7 @@ import Crypt.NaCl.Types (
   , BoxKeyPair
   , BoxPublicKey
   , BoxSecretKey
-  , MessageRaw
+  , Message
   , Nonce
   , BoxSharedKey
   )
@@ -40,26 +40,26 @@ foreign import getBoxPublicKey :: BoxKeyPair -> BoxPublicKey
 foreign import getBoxSecretKey :: BoxKeyPair -> BoxSecretKey
 
 -- | Create a `Box`, which is an encrypted, authenticated message
-foreign import box :: MessageRaw -> Nonce -> BoxPublicKey -> BoxSecretKey -> Box
+foreign import box :: Message -> Nonce -> BoxPublicKey -> BoxSecretKey -> Box
 
 -- | Create a `Box` with a `BoxSharedKey`
-foreign import boxAfter :: MessageRaw -> Nonce -> BoxSharedKey -> Box
+foreign import boxAfter :: Message -> Nonce -> BoxSharedKey -> Box
 
 -- | Create a `BoxSharedKey` from one user's `BoxPublicKey` and a separate
 -- | user's `BoxSecretKey`
 foreign import boxBefore :: BoxPublicKey -> BoxSecretKey -> BoxSharedKey
 
-foreign import _boxOpen :: Box -> Nonce -> BoxPublicKey -> BoxSecretKey -> Nullable MessageRaw
+foreign import _boxOpen :: Box -> Nonce -> BoxPublicKey -> BoxSecretKey -> Nullable Message
 
-foreign import _boxOpenAfter :: Box -> Nonce -> BoxSharedKey -> Nullable MessageRaw
+foreign import _boxOpenAfter :: Box -> Nonce -> BoxSharedKey -> Nullable Message
 
 -- | Opening a box decrypts and authenticates the message.
--- | This will return the `MessageRaw` plaintext if decryption and SignatureB64
+-- | This will return the `Message` plaintext if decryption and SignatureB64
 -- | validation succeeds, and `Nothing` if authentication or decryption fails.
-boxOpen :: Box -> Nonce -> BoxPublicKey -> BoxSecretKey -> Maybe MessageRaw
+boxOpen :: Box -> Nonce -> BoxPublicKey -> BoxSecretKey -> Maybe Message
 boxOpen b n p s = toMaybe $ _boxOpen b n p s
 
 -- | Similar to `boxOpen`, but opens a box with a `BoxSharedKey` that has been
 -- | generated with `boxBefore` instead of a `BoxPublicKey` and `BoxSecretKey`
-boxOpenAfter :: Box -> Nonce -> BoxSharedKey -> Maybe MessageRaw
+boxOpenAfter :: Box -> Nonce -> BoxSharedKey -> Maybe Message
 boxOpenAfter b n k = toMaybe $ _boxOpenAfter b n k

@@ -14,10 +14,10 @@ runSecretBoxTests = do
   keyB     <- generateSecretBoxKey
   nonce    <- generateNonce
   badNonce <- generateNonce
-  let msg    = "Test Message 12345"
-  let msgRaw = toMessageRaw msg
+  let str = "Test Message 12345"
+  let msg = toMessage str
 
-  let sBox = secretBox msgRaw nonce keyA
+  let sBox = secretBox msg nonce keyA
   -- Try with good nonce but bad Key
   let decMsgFail = secretBoxOpen sBox nonce keyB
   assert $ isNothing decMsgFail
@@ -26,4 +26,4 @@ runSecretBoxTests = do
   assert $ isNothing decMsgFail
   -- Try with right nonce and key
   let decMsgSuccess = secretBoxOpen sBox nonce keyA
-  assert $ cmpMsg msg decMsgSuccess
+  assert $ cmpMsg str decMsgSuccess
