@@ -48,5 +48,8 @@ foreign import data SignPublicKey :: Type
 -- | A NaCl SignSecretKey
 foreign import data SignSecretKey :: Type
 
+-- | A NaCl SignSeed (a 32 byte seed can be used to generate a 64 byte SignSecretKey)
+foreign import data SignSeed :: Type
+
 -- | A NaCl SignedMessage, which is represented as a Uint8Array in JS
 foreign import data SignedMessage :: Type
