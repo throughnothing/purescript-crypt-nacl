@@ -11,6 +11,10 @@ exports.getSignKeyPair = function(secretKey) {
   return nacl.sign.keyPair.fromSecretKey(secretKey);
 }
 
+exports.getSignKeyPairFromSeed = function(seed) {
+  return nacl.sign.keyPair.fromSeed(seed);
+}
+
 exports.getSignPublicKey = function(signKeyPair) {
   return signKeyPair.publicKey;
 }
