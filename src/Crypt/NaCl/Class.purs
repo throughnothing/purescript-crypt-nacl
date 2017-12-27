@@ -74,3 +74,6 @@ instance signSecretKeyUint8ArrayAble :: Uint8ArrayAble SignSecretKey where
 
 instance signedMessageUint8ArrayAble :: Uint8ArrayAble SignedMessage where
   toUint8Array = unsafeCoerce
+
+instance signSeedUint8ArrayAble :: Uint8ArrayAble SignSeed where 
+  toUint8Array = unsafeCoerce

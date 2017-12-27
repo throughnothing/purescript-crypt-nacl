@@ -1,6 +1,7 @@
 module Crypt.NaCl.Sign
   ( generateSignKeyPair
   , getSignKeyPair
+  , getSignKeyPairFromSeed
   , getSignPublicKey
   , getSignSecretKey
   , signDetached
