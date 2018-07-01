@@ -2,7 +2,7 @@ module Crypt.NaCl.Random where
 
 import Data.Unit (Unit)
 import Data.ArrayBuffer.Types (Uint8Array)
-import Control.Monad.Eff (Eff)
+import Effect (Effect)
 
 import Crypt.NaCl.Types (Nonce, NACL_RANDOM)
 

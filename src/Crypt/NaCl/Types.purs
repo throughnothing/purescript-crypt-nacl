@@ -1,7 +1,6 @@
 module Crypt.NaCl.Types where
-import Control.Monad.Eff (kind Effect)
 
-foreign import data NACL_RANDOM :: Effect
+foreign import data NACL_RANDOM :: Type -> Type
 
 -- | A NaCl SHA-512 Hash
 foreign import data HashSha512 :: Type

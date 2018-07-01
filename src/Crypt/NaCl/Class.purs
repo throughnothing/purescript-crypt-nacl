@@ -1,6 +1,7 @@
 module Crypt.NaCl.Class where
 
-import Control.Monad.Eff.Exception (Error)
+import Effect
+import Effect.Exception (Error)
 import Data.ArrayBuffer.Types (Uint8Array, Uint8, ArrayView)
 import Data.Either (Either)
 import Data.TextEncoder (encodeUtf8)

@@ -9,7 +9,7 @@ module Crypt.NaCl.Sign
   , verifyDetached
   ) where
 
-import Control.Monad.Eff (Eff)
+import Effect (Effect)
 import Data.Nullable (Nullable, toMaybe)
 import Data.Maybe (Maybe)
 

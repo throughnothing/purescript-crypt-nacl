@@ -28,6 +28,7 @@
     "purescript-maybe": "^4.0.0",
     "purescript-arraybuffer-types": "^2.0.0",
     "purescript-nullable": "^4.0.0",
+    "purescript-exceptions": "^4.0.0",
     "purescript-either": "^4.0.0"
   },
   "devDependencies": {

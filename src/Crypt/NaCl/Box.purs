@@ -11,7 +11,7 @@ module Crypt.NaCl.Box
   ) where
 
 import Prelude (($))
-import Control.Monad.Eff (Eff)
+import Effect (Effect)
 import Data.Nullable (Nullable, toMaybe)
 import Data.Maybe (Maybe)
 
