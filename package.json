@@ -6,7 +6,8 @@
     "test": "pulp test"
   },
   "dependencies": {
-    "tweetnacl": "^1.0.0"
+    "tweetnacl": "^1.0.0",
+    "text-encoding": "^0.6.4"
   },
   "devDependencies": {
     "pulp": "^12.3.0",
