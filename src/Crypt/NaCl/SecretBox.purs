@@ -10,14 +10,13 @@ import Data.Maybe (Maybe)
 
 import Crypt.NaCl.Types (
     Message
-  , NACL_RANDOM
   , Nonce
   , SecretBoxKey
   , SecretBox
   )
 
 -- | Generate a key for use with a `SecretBox`
-foreign import generateSecretBoxKey :: forall e. Eff (naclRandom :: NACL_RANDOM | e) SecretBoxKey
+foreign import generateSecretBoxKey :: Effect SecretBoxKey
 
 -- | Create a SecretBox, which is an encrypted and authenticated message
 foreign import secretBox :: Message -> Nonce -> SecretBoxKey -> SecretBox
