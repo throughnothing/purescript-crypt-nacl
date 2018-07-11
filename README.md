@@ -1,5 +1,6 @@
 # purescript-tweetnacl
 [![Pursuit](https://pursuit.purescript.org/packages/purescript-tweetnacl/badge)](https://pursuit.purescript.org/packages/purescript-tweetnacl)
+[![Build Status](https://travis-ci.org/AlexaDeWit/purescript-tweetnacl.svg?branch=master)](https://travis-ci.org/AlexaDeWit/purescript-tweetnacl)
 
 This module wraps [tweetnacl](https://github.com/dchest/tweetnacl-js), which is
 a javascript re-implementation of the original
