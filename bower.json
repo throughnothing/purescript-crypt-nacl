@@ -1,16 +1,19 @@
 {
-  "name": "purescript-crypt-nacl",
-  "homepage": "https://github.com/throughnothing/purescript-crypt-nacl",
+  "name": "purescript-tweetnacl",
+  "homepage": "https://github.com/AlexaDeWit/purescript-tweetnacl",
   "description": "A wrapper of tweetnacl-js for Purescript",
   "keywords": [
     "purescript",
     "nacl",
     "crypto"
   ],
+  "authors": [
+    "William Wolf"
+  ],
   "license": "CC0-1.0",
   "repository": {
     "type": "git",
-    "url": "git://github.com/throughnothing/purescript-crypt-nacl.git"
+    "url": "git@github.com:AlexaDeWit/purescript-tweetnacl.git"
   },
   "ignore": [
     "**/.*",

@@ -1,5 +1,6 @@
 {
   "private": true,
+  "author": "William Wolf",
   "scripts": {
     "clean": "rimraf output && rimraf .pulp-cache",
     "build": "pulp build",
