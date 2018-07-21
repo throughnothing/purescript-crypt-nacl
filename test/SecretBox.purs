@@ -1,14 +1,14 @@
 module Test.SecretBox where
 
 import Prelude
-import Control.Monad.Eff (Eff)
+import Effect (Effect)
 import Data.Maybe
 import Test.Assert
 
 import Test.Util
 import Crypt.NaCl
 
-runSecretBoxTests :: forall e. Eff (naclRandom :: NACL_RANDOM, assert :: ASSERT | e) Unit
+runSecretBoxTests :: Effect Unit
 runSecretBoxTests = do
   keyA     <- generateSecretBoxKey
   keyB     <- generateSecretBoxKey

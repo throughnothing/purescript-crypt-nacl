@@ -1,16 +1,19 @@
 {
-  "name": "purescript-crypt-nacl",
-  "homepage": "https://github.com/throughnothing/purescript-crypt-nacl",
+  "name": "purescript-tweetnacl",
+  "homepage": "https://github.com/AlexaDeWit/purescript-tweetnacl",
   "description": "A wrapper of tweetnacl-js for Purescript",
   "keywords": [
     "purescript",
     "nacl",
     "crypto"
   ],
+  "authors": [
+    "William Wolf"
+  ],
   "license": "CC0-1.0",
   "repository": {
     "type": "git",
-    "url": "git://github.com/throughnothing/purescript-crypt-nacl.git"
+    "url": "git@github.com:AlexaDeWit/purescript-tweetnacl.git"
   },
   "ignore": [
     "**/.*",
@@ -22,17 +25,18 @@
     "bower.json"
   ],
   "dependencies": {
-    "purescript-prelude": "^3.0.0",
-    "purescript-eff": "^3.1.0",
-    "purescript-unsafe-coerce": "^3.0.0",
-    "purescript-maybe": "^3.0.0",
+    "purescript-prelude": "^4.0.0",
+    "purescript-effect": "^2.0.0",
+    "purescript-unsafe-coerce": "^4.0.0",
+    "purescript-maybe": "^4.0.0",
     "purescript-arraybuffer-types": "^2.0.0",
-    "purescript-nullable": "^3.0.0",
-    "purescript-encoding": "^0.0.4",
-    "purescript-either": "^3.0.0"
+    "purescript-nullable": "^4.0.0",
+    "purescript-exceptions": "^4.0.0",
+    "purescript-either": "^4.0.0",
+    "purescript-text-encoding": "^0.0.8"
   },
   "devDependencies": {
-    "purescript-psci-support": "^3.0.0",
-    "purescript-assert": "^3.0.0"
+    "purescript-psci-support": "^4.0.0",
+    "purescript-assert": "^4.0.0"
   }
 }
