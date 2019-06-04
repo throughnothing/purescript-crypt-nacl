@@ -11,13 +11,12 @@ module Crypt.NaCl.Box
   ) where
 
 import Prelude (($))
-import Control.Monad.Eff (Eff)
 import Data.Nullable (Nullable, toMaybe)
 import Data.Maybe (Maybe)
+import Effect (Effect)
 
-import Crypt.NaCl.Types (
-    NACL_RANDOM
-  , Box
+import Crypt.NaCl.Types
+  ( Box
   , BoxKeyPair
   , BoxPublicKey
   , BoxSecretKey
@@ -28,7 +27,7 @@ import Crypt.NaCl.Types (
 
 
 -- | Generate a `BoxKeyPair` for NaCl Box operations
-foreign import generateBoxKeyPair :: forall e. Eff (naclRandom :: NACL_RANDOM | e) BoxKeyPair
+foreign import generateBoxKeyPair :: Effect BoxKeyPair
 
 -- | Get a `BoxKeyPair` from the given `BoxSecretKey`
 foreign import getBoxKeyPair :: BoxSecretKey -> BoxKeyPair

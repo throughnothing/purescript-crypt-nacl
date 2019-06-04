@@ -1,6 +1,6 @@
 module Crypt.NaCl.Class where
 
-import Control.Monad.Eff.Exception (Error)
+import Effect.Exception (Error)
 import Data.ArrayBuffer.Types (Uint8Array, Uint8, ArrayView)
 import Data.Either (Either)
 import Data.TextEncoder (encodeUtf8)
@@ -8,7 +8,6 @@ import Data.TextDecoder (decodeUtf8)
 import Unsafe.Coerce (unsafeCoerce)
 
 import Crypt.NaCl.Types
-
 
 -- | Denotes a class of NaCl types which are convertable to `Uint8Array`s.
 -- | Instances of this typeclass will `unsafeCoerce` their values to `Uint8Array`

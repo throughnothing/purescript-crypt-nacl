@@ -1,0 +1,17 @@
+{
+  "name": "purescript-crypt-nacl",
+  "set": "psc-0.12.5",
+  "source": "https://github.com/purescript/package-sets.git",
+  "depends": [
+    "arraybuffer-types",
+    "assert",
+    "effect",
+    "either",
+    "encoding",
+    "exceptions",
+    "maybe",
+    "nullable",
+    "prelude",
+    "unsafe-coerce"
+  ]
+}

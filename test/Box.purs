@@ -1,14 +1,14 @@
 module Test.Box where
 
 import Prelude
-import Control.Monad.Eff (Eff)
+import Effect (Effect)
 import Data.Maybe
 import Test.Assert
 
 import Test.Util
 import Crypt.NaCl
 
-runBoxTests :: forall e. Eff (naclRandom :: NACL_RANDOM, assert :: ASSERT | e) Unit
+runBoxTests :: Effect Unit
 runBoxTests = do
   -- | Setup with 3 keypairs, Alice, Bob, Evil
   aliceKp <- generateBoxKeyPair

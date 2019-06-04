@@ -1,14 +1,14 @@
 module Test.SecretBox where
 
 import Prelude
-import Control.Monad.Eff (Eff)
+import Effect (Effect)
 import Data.Maybe
 import Test.Assert
 
 import Test.Util
 import Crypt.NaCl
 
-runSecretBoxTests :: forall e. Eff (naclRandom :: NACL_RANDOM, assert :: ASSERT | e) Unit
+runSecretBoxTests :: Effect Unit
 runSecretBoxTests = do
   keyA     <- generateSecretBoxKey
   keyB     <- generateSecretBoxKey
@@ -18,12 +18,15 @@ runSecretBoxTests = do
   let msg = fromString str
 
   let sBox = secretBox msg nonce keyA
+
   -- Try with good nonce but bad Key
   let decMsgFail = secretBoxOpen sBox nonce keyB
   assert $ isNothing decMsgFail
+
   -- Try with badNonce but good Key
   let decMsgFail2 = secretBoxOpen sBox badNonce keyA
   assert $ isNothing decMsgFail
+
   -- Try with right nonce and key
   let decMsgSuccess = secretBoxOpen sBox nonce keyA
   assert $ cmpMsg str decMsgSuccess

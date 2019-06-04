@@ -1,14 +1,15 @@
 module Test.Sign where
 
 import Prelude
-import Control.Monad.Eff (Eff)
+
+import Effect (Effect)
 import Data.Maybe
 import Test.Assert
 
 import Test.Util
 import Crypt.NaCl
 
-runSignTests :: forall e. Eff (naclRandom :: NACL_RANDOM, assert :: ASSERT | e) Unit
+runSignTests :: Effect Unit
 runSignTests = do
   signKpA  <- generateSignKeyPair
   signKpB  <- generateSignKeyPair

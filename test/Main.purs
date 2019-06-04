@@ -1,17 +1,9 @@
 module Test.Main where
 
 import Prelude
-import Control.Monad.Eff (Eff)
-import Test.Assert
+import Effect (Effect)
+import Effect.Console (log)
 
-import Crypt.NaCl
-
-import Test.Box (runBoxTests)
-import Test.SecretBox (runSecretBoxTests)
-import Test.Sign (runSignTests)
-
-main :: forall e. Eff (naclRandom :: NACL_RANDOM, assert :: ASSERT | e) Unit
+main :: Effect Unit
 main = do
-  runSignTests
-  runBoxTests
-  runSecretBoxTests
+  log "You should add some tests."

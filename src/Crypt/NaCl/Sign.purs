@@ -9,13 +9,13 @@ module Crypt.NaCl.Sign
   , verifyDetached
   ) where
 
-import Control.Monad.Eff (Eff)
+
 import Data.Nullable (Nullable, toMaybe)
 import Data.Maybe (Maybe)
+import Effect (Effect)
 
-import Crypt.NaCl.Types (
-    Message
-  , NACL_RANDOM
+import Crypt.NaCl.Types
+  ( Message
   , SignKeyPair
   , Signature
   , SignedMessage
@@ -24,7 +24,7 @@ import Crypt.NaCl.Types (
   )
 
 -- | Generate a random key pair for signing messages
-foreign import generateSignKeyPair :: forall e. Eff (naclRandom :: NACL_RANDOM | e) SignKeyPair
+foreign import generateSignKeyPair :: Effect SignKeyPair
 
 -- | Get the signing keypair for a given `SignSecretKey`
 foreign import getSignKeyPair :: SignSecretKey -> SignKeyPair
