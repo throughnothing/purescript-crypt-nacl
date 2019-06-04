@@ -3,10 +3,8 @@ dist: trusty
 sudo: required
 node_js: 6
 install:
-  - npm install bower -g
   - npm install
 script:
-  - bower install --production
+  - npm run psc-package install
   - npm run -s build
-  - bower install
   - npm -s test
